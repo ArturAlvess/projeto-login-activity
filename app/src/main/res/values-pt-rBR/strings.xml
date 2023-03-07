@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LoginActivity</string>
+    <string name="title">Entrar</string>
+    <string name="subtitle">Por favor faça seu login para continuar.</string>
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="email_example">Digite seu email aqui</string>
+    <string name="password_example">Digite sua senha aqui</string>
+    <string name="sign_in">ENTRAR</string>
+    <string name="account">Não tem uma conta?</string>
+    <string name="sign_up">Cadastre-se</string>
+</resources>
