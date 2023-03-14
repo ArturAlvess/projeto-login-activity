@@ -6,7 +6,14 @@
     <string name="password">Password</string>
     <string name="email_example">Type your email here</string>
     <string name="password_example">Type your password here</string>
-    <string name="sign_in">SIGN IN</string>
-    <string name="account">Don’t have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
+    <string name="create">Create a new account</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="username">Username</string>
+    <string name="phone">Phone</string>
+    <string name="over_18">Over 18?</string>
+    <string name="bottom_account">Create Account</string>
+    <string name="already_account">Already have an account?</string>
 </resources>

@@ -7,7 +7,14 @@
     <string name="password">Senha</string>
     <string name="email_example">Digite seu email aqui</string>
     <string name="password_example">Digite sua senha aqui</string>
-    <string name="sign_in">ENTRAR</string>
+    <string name="sign_in">Entrar</string>
     <string name="account">Não tem uma conta?</string>
     <string name="sign_up">Cadastre-se</string>
+    <string name="create">Crie uma nova conta</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="username">Username</string>
+    <string name="phone">Telefone</string>
+    <string name="over_18">Maior de 18?</string>
+    <string name="bottom_account">Criar conta</string>
+    <string name="already_account">Já possui uma conta?</string>
 </resources>

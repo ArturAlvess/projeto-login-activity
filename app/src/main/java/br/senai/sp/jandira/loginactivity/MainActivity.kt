@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun LoginScreen() {
     var emailState = rememberSaveable {
@@ -63,7 +64,7 @@ fun LoginScreen() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 220.dp, start = 30.dp)
+                .padding(top = 200.dp, start = 30.dp)
 
         ) {
             Text(
@@ -82,26 +83,41 @@ fun LoginScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 380.dp, start = 30.dp)
+                .padding(top = 360.dp, start = 30.dp)
         ) {
             OutlinedTextField(
-                value = stringResource(id = R.string.email_example),
+                value = "",
+                label = { Text(text = "Email")},
                 onValueChange = {
                     emailState
                 }, shape = RoundedCornerShape(10.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(end = 17.dp)
+                    .padding(end = 17.dp),
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.baseline_email_24),
+                        contentDescription = null,
+                        tint = Color(206, 6, 240)
+                    )
+                }
             )
             Spacer(modifier = Modifier.height(32.dp))
             OutlinedTextField(
-                value = stringResource(id = R.string.password_example),
+                value = "",
+                label = { Text(text = "Password")},
                 onValueChange = {
                     passwordState
                 }, shape = RoundedCornerShape(10.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(end = 17.dp),
+                leadingIcon = {
+                    Icon(painter = painterResource(id = R.drawable.baseline_lock_24),
+                        contentDescription = null,
+                        tint = Color(206, 6, 240)
+                    )
+                }
 
             )
         }
@@ -110,7 +126,7 @@ fun LoginScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 600.dp, start = 150.dp)
+                .padding(top = 580.dp, start = 150.dp)
         )
         {
             Button(onClick = {},
@@ -122,7 +138,12 @@ fun LoginScreen() {
                     colors = ButtonDefaults.buttonColors(Color(207, 6, 240, 240)),
 
             ) {
-                Text(text = stringResource(id = R.string.sign_in), color = Color.White)
+                Row() {
+                    Text(text = stringResource(id = R.string.sign_in).uppercase(), color = Color.White)
+                    Icon(painter = painterResource(id = R.drawable.baseline_arrow_forward_24),
+                        contentDescription = null, tint = Color.White)
+                }
+
             }
 
             Row() {
@@ -136,7 +157,8 @@ fun LoginScreen() {
         }
 
         Column(modifier = Modifier
-            .fillMaxWidth().padding(top = 811.dp)
+            .fillMaxWidth()
+            .padding(top = 718.dp)
         ) {
             Row(modifier = Modifier
                 .fillMaxWidth(),
