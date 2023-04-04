@@ -3,14 +3,22 @@ package br.senai.sp.jandira.loginactivity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -18,6 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.senai.sp.jandira.loginactivity.components.BottomShape
+import br.senai.sp.jandira.loginactivity.components.TopShape
 import br.senai.sp.jandira.loginactivity.ui.theme.LoginActivityTheme
 
 class RegisterActivity : ComponentActivity() {
@@ -57,19 +67,14 @@ fun RegisterScreen() {
             Row(modifier = Modifier
                 .fillMaxWidth(),
                 horizontalArrangement =  Arrangement.End) {
-                Surface(modifier = Modifier
-                    .width(120.dp)
-                    .height(40.dp),
-                    color = Color(207, 6, 240, 240),
-                    shape = RoundedCornerShape(bottomStart = 20.dp)
-                ) {
-
-                }
+                TopShape()
             }
         }
 
         Column(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 130.dp)
         ) {
             Text(
                 text = stringResource(id = R.string.sign_up),
@@ -79,15 +84,52 @@ fun RegisterScreen() {
             )
             Text(
                 text = stringResource(id = R.string.create),
-                fontSize = 14.sp,
+                fontSize = 12.sp,
                 color = Color(160, 156, 156, 240),
-                fontWeight = FontWeight(400)
+                fontWeight = FontWeight(400),
+                modifier = Modifier.padding(vertical = 10.dp)
 
             )
+            Box(
+                modifier = Modifier.size(100.dp)
+            ){
+                Card(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .align(alignment = Alignment.TopEnd),
+                    shape = CircleShape,
+                    border = BorderStroke(width = 2.dp, Brush.horizontalGradient(colors = listOf(Color.Magenta, Color.White)))
+                ) {
+                    Image(painter = painterResource(id = R.drawable.baseline_person_outline_24), contentDescription = null)
+                }
+                Card(
+                    modifier = Modifier
+                        .size(50.dp)
+                        .align(alignment = Alignment.BottomEnd)
+                        .offset(x = 20.dp, y = 5.dp),
+                shape = CircleShape,
+
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.baseline_photo_camera_24),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .align(alignment = Alignment.BottomEnd)
+                            .size(24.dp)
+                    )
+                }
+
+            }
 
 
         }
-        Column() {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                horizontal = 30.dp,
+                vertical = 20.dp
+            )
+        ) {
             OutlinedTextField(
                 value = "",
                 label = { Text(text = stringResource(id = R.string.username))},
@@ -95,7 +137,8 @@ fun RegisterScreen() {
                     emailState
                 }, shape = RoundedCornerShape(10.dp),
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(vertical = 5.dp),
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_person_24),
@@ -111,7 +154,8 @@ fun RegisterScreen() {
                     emailState
                 }, shape = RoundedCornerShape(10.dp),
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(vertical = 5.dp),
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_phone_android_24),
@@ -127,7 +171,8 @@ fun RegisterScreen() {
                     emailState
                 }, shape = RoundedCornerShape(10.dp),
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(vertical = 5.dp),
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_email_24),
@@ -143,7 +188,8 @@ fun RegisterScreen() {
                     emailState
                 }, shape = RoundedCornerShape(10.dp),
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(vertical = 5.dp),
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_lock_24),
@@ -168,7 +214,9 @@ fun RegisterScreen() {
                     .width(327.dp)
                     .height(48.dp),
                 shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(Color(207, 6, 240, 240))
+                colors = ButtonDefaults.buttonColors(Color(207, 6, 240, 240),
+                )
+
             ) {
                 Text(
                     text = stringResource(id = R.string.bottom_account)
@@ -176,11 +224,30 @@ fun RegisterScreen() {
                     color = Color.White
                 )
             }
-            Text(
-                text = stringResource(id = R.string.already_account),
-                color = Color(160, 156, 156, 240)
-            )
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 10.dp), horizontalArrangement = Arrangement.End) {
+                Text(
+                    text = stringResource(id = R.string.already_account),
+                    color = Color(160, 156, 156, 240)
+                )
+                Text(
+                    text = stringResource(id = R.string.sign_up),
+                    color = Color.Magenta,
+                    modifier = Modifier.padding(horizontal = 5.dp)
+                )
+            }
+
         }
+            Column(modifier = Modifier
+                .fillMaxWidth()
+            ) {
+                Row(modifier = Modifier
+                    .fillMaxWidth(),
+                    horizontalArrangement =  Arrangement.Start) {
+                    BottomShape()
+                }
+            }
         }
 
 
